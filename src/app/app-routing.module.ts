@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {BlogsComponent} from "./blogs/blogs.component";
+import {ViewComponent} from "./view/view.component";
 import {FeedBackComponent} from "./feed-back/feed-back.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {LoginComponent} from "./login/login.component";
@@ -22,8 +22,8 @@ const routes: Routes = [
     component: EditorComponent
   },
   {
-    path: 'blogs',
-    component: BlogsComponent
+    path: 'view',
+    component: ViewComponent
   },
   {
     path: 'feedback',
@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: BlogsComponent,
+    component: ViewComponent,
     pathMatch: 'full'
   },
   {

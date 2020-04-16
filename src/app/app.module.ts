@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { BlogsComponent } from './blogs/blogs.component';
+import { ViewComponent } from './view/view.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -19,7 +19,7 @@ import { EditorComponent } from './editor/editor.component';
     NavigationComponent,
     FeedBackComponent,
     NotFoundComponent,
-    BlogsComponent,
+    ViewComponent,
     LoginComponent,
     SignUpComponent,
     EditorComponent

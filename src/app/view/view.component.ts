@@ -5,16 +5,22 @@ import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-blogs',
-  templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.css']
+  templateUrl: './view.component.html',
+  styleUrls: ['./view.component.css']
 })
-export class BlogsComponent implements OnInit {
+export class ViewComponent implements OnInit {
   blogPosts: BlogPost[] = [];
+  selectedBlogPost: BlogPost;
 
   constructor(private apiService: ZcwAppService) { }
 
   ngOnInit(): void {
     this.getAllBlogPosts();
+  }
+
+  selectBlogPost(blogPost: BlogPost) {
+    this.selectedBlogPost = blogPost;
+    console.log(this.selectedBlogPost.id);
   }
 
   public getAllBlogPosts(){

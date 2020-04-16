@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BlogPost} from "../blogs/model/blog-post";
+import {BlogPost} from "../view/model/blog-post";
 import {formatDate} from "@angular/common";
 import {ZcwAppService} from "../shared/zcw-app.service";
 
