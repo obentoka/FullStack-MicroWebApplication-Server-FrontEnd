@@ -10,6 +10,8 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpClientModule } from "@angular/common/http";
     FeedBackComponent,
     NotFoundComponent,
     BlogsComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

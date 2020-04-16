@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && createBlogPost()" novalidate class="login-form">
+        <!-- Title -->
+        <div class="form-group" style="margin-top:30px;">
+          <label for="title">Title</label>
+          <input type="text"
+                 id="title"
+                 class="form-control"
+                 name="title"
+                 placeholder="What's the title of your post?"
+                 [(ngModel)]="model.title"
+                 #title="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && title.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && title.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="title.errors?.required">Title is required</div>
+          </div>
+        </div>
+        <!-- Tag -->
+        <div class="form-group">
+          <label for="tag">Tag</label>
+          <input type="text"
+                 id="tag"
+                 class="form-control"
+                 name="tag"
+                 placeholder="#Tag"
+                 [(ngModel)]="model.tag"
+                 #tag="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && tag.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && tag.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="tag.errors?.required">Tag is required</div>
+          </div>
+        </div>
+        <!-- Post -->
+        <div class="form-group">
+          <label for="post">Post</label>
+          <textarea
+            id="post"
+            class="form-control"
+            name="post"
+            placeholder="Your post"
+            rows="10"
+            [(ngModel)]="model.body"
+            #post="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && post.invalid }"
+            required minlength="10">
+			    </textarea>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && post.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="post.errors?.required">Post is required</div>
+            <div *ngIf="post.errors?.minlength">Post is too short (try 10 characters)</div>
+          </div>
+        </div>
+
+        <button type="submit"
+                class="btn btn-info pull-right">
+          <i class="fas fa-sign-in-alt"></i> Save Post
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>

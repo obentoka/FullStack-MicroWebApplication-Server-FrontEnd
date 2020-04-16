@@ -4,29 +4,39 @@ import {BlogsComponent} from "./blogs/blogs.component";
 import {FeedBackComponent} from "./feed-back/feed-back.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {LoginComponent} from "./login/login.component";
+import {SignUpComponent} from "./sign-up/sign-up.component";
+import {EditorComponent} from "./editor/editor.component";
 
 
 const routes: Routes = [
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'blogs',
-    component:BlogsComponent
+    path: 'signup',
+    component: SignUpComponent
   },
   {
-    path:'feedback',
-    component:FeedBackComponent
+    path: 'editor',
+    component: EditorComponent
   },
   {
-    path:'',
-    component:BlogsComponent,
-    pathMatch:'full'
+    path: 'blogs',
+    component: BlogsComponent
   },
   {
-    path:'**',
-    component:NotFoundComponent
+    path: 'feedback',
+    component: FeedBackComponent
+  },
+  {
+    path: '',
+    component: BlogsComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
