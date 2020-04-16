@@ -10,7 +10,7 @@ import {ZcwAppService} from "../shared/zcw-app.service";
 })
 export class EditorComponent implements OnInit {
   model: BlogPost = {
-    id: null,
+    blogId: null,
     dateCreated: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     title: '',
     body: '',
@@ -26,7 +26,7 @@ export class EditorComponent implements OnInit {
   public createBlogPost(): void{
     this.apiService.postBlogPost(this.model).subscribe(
       res => {
-        this.model.id = res.id;
+        this.model.blogId = res.blogId;
         location.assign("http://localhost:4200/blogs")
       },
       error => {

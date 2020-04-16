@@ -18,13 +18,16 @@
       </button>
     </div>
   </div>
-  <!--  Blog content-->
+
   <div class="row" style="margin-top: 28px;">
+<!--    News-->
     <div class="col">
       Other blogs
     </div>
+
+    <!--  Blog content-->
     <div class="col-6">
-      <div *ngFor="let blogPost of blogPosts" (click)="selectBlogPost(blogPost)"
+      <div *ngFor="let blogPost of blogPosts" (click)="getAllCommentsBySelectedBlog(blogPost)"
            class="list-group-item list-group-item-action">
         <div class="card" style="width: 100%;">
           <div class="card-body">
@@ -38,14 +41,15 @@
         </div>
       </div>
     </div>
+
+<!--    Comments-->
     <div class="col">
-<!--      <div *ngFor="let blogPost of blogPosts"  class="list-group-item card"-->
-<!--           style="width: 100%;">-->
-<!--        <div class="card-body">-->
-<!--          <h5 class="card-title">{{blogPost.title}}</h5>-->
-<!--          <p class="card-text">{{blogPost.body}}</p>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div *ngFor="let comment of comments"  class="list-group-item card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">{{comment.user}}</h5>
+          <p class="card-text">{{comment.text}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BlogPost} from "./model/blog-post";
+import {BlogComment} from "./model/blog-comment";
 import {ZcwAppService} from "../shared/zcw-app.service";
 import {formatDate} from "@angular/common";
 
@@ -11,19 +12,20 @@ import {formatDate} from "@angular/common";
 export class ViewComponent implements OnInit {
   blogPosts: BlogPost[] = [];
   selectedBlogPost: BlogPost;
+  comments: BlogComment[] = [];
 
-  constructor(private apiService: ZcwAppService) { }
+  constructor(private apiService: ZcwAppService) {
+  }
 
   ngOnInit(): void {
     this.getAllBlogPosts();
   }
 
-  selectBlogPost(blogPost: BlogPost) {
+  public selectBlogPost(blogPost: BlogPost) {
     this.selectedBlogPost = blogPost;
-    console.log(this.selectedBlogPost.id);
   }
 
-  public getAllBlogPosts(){
+  public getAllBlogPosts() {
     this.apiService.getAllBlogPosts().subscribe(
       res => {
         this.blogPosts = res;
@@ -32,5 +34,19 @@ export class ViewComponent implements OnInit {
         alert("An error has occurred while fetching all blog posts")
       }
     )
+  }
+
+  public getAllCommentsBySelectedBlog(blogPost: BlogPost) {
+    this.selectedBlogPost = blogPost;
+    if (this.blogPosts.length != 0) {
+      this.apiService.getAllCommentByBlogId(this.selectedBlogPost.blogId).subscribe(
+        res => {
+          this.comments = res;
+        },
+        error => {
+          alert("An error occurred while fetching comments relating to blog id" + this.selectedBlogPost.blogId)
+        }
+      )
+    }
   }
 }
