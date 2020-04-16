@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && signUp()" novalidate class="login-form">
+        <!-- User Name -->
+        <div class="form-group" style="margin-top:30px;">
+          <label for="username">Username</label>
+          <input type="text"
+                 id="username"
+                 class="form-control"
+                 name="name"
+                 placeholder="Enter a username"
+                 [(ngModel)]="model.username"
+                 #username="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && username.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="username.errors?.required">Username is required</div>
+          </div>
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text"
+                 id="password"
+                 class="form-control"
+                 name="password"
+                 placeholder="Your password"
+                 [(ngModel)]="model.password"
+                 #password="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && password.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="password.errors?.required">Password is required</div>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Password</label>
+          <input type="text"
+                 id="email"
+                 class="form-control"
+                 name="email"
+                 placeholder="Your email"
+                 [(ngModel)]="model.email"
+                 #email="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                 required email/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="email.errors?.required">Email is required</div>
+            <div *ngIf="email.errors?.email">{{email.value}} is not a valid email</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>

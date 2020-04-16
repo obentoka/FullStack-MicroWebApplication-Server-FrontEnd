@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3"></div>
+    <div class="col-md">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate class="login-form">
+        <!-- User Name -->
+        <div class="form-group" style="margin-top:30px;">
+          <label for="username">Username</label>
+          <input type="text"
+                 id="username"
+                 class="form-control"
+                 name="name"
+                 placeholder="Enter a username"
+                 [(ngModel)]="model.username"
+                 #username="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && username.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="username.errors?.required">Username is required</div>
+          </div>
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text"
+                 id="password"
+                 class="form-control"
+                 name="password"
+                 placeholder="Your password"
+                 [(ngModel)]="model.password"
+                 #password="ngModel"
+                 [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                 required/>
+          <!-- input validation group -->
+          <div *ngIf="f.submitted && password.invalid" class="invalid-input">
+            <!-- individual validation errors -->
+            <div *ngIf="password.errors?.required">Password is required</div>
+            <div *ngIf="password.errors?.password">{{password.value}} is not a valid</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-info pull-right">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+      </form>
+    </div>
+    <div class="offset-3"></div>
+  </div>
+</div>
