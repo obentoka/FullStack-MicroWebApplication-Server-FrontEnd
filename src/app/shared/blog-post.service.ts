@@ -7,13 +7,10 @@ import {BlogComment} from "../view/model/blog-comment";
 @Injectable({
   providedIn: 'root'
 })
-export class ZcwAppService {
-  private BASE_URL = "http://localhost:8080/zcwApp";
-  private ALL_BLOGPOSTS_URL = `${this.BASE_URL}/blogPost/all`;
-  private POST_BLOGPOST_URL = `${this.BASE_URL}/blogPost/save`;
-
-  private ALL_COMMENTS_BY_POST_URL = `${this.BASE_URL}/comment/allByBlogId/`;
-  private newUrl: string;
+export class BlogPostService {
+  private BASE_URL = "http://localhost:8080/zcwApp/blogPost";
+  private ALL_BLOGPOSTS_URL = `${this.BASE_URL}/all`;
+  private POST_BLOGPOST_URL = `${this.BASE_URL}/save`;
 
   constructor(private http: HttpClient) { }
 
@@ -23,10 +20,5 @@ export class ZcwAppService {
 
   postBlogPost(blogPost: BlogPost): Observable<BlogPost>{
     return this.http.post<BlogPost>(this.POST_BLOGPOST_URL, blogPost);
-  }
-
-  getAllCommentByBlogId(id: number): Observable<BlogComment[]>{
-    this.newUrl = this.ALL_COMMENTS_BY_POST_URL + id.toString();
-    return this.http.get<BlogComment[]>(this.newUrl);
   }
 }

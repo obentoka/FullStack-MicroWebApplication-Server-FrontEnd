@@ -17,15 +17,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
-    let url = "http://localhost:8080/zcwApp/user"
-    this.http.post(url, this.model).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        alert("An error has occurred while logging in")
-      }
-    )
   }
 }
 
