@@ -47,4 +47,10 @@ export class ViewComponent implements OnInit {
       )
     }
   }
+
+  public deleteBlogPost(blogPost: BlogPost) {
+    if(confirm("Are you sure you want to delete this blog post?")){
+
+    }
+  }
 }

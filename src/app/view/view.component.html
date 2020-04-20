@@ -35,7 +35,8 @@
               <br class="pull-right">by {{blogPost.username}}<a class="text-black-50"> {{blogPost.dateCreated}}</a><br>
             </h5>
             <p class="card-text">{{blogPost.body}}</p>
-            <a href="#" class="btn-sm btn-danger pull-right">
+            <a href="#" class="btn-sm btn-danger pull-right"
+            (click)="deleteBlogPost()">
               <i class="fa fa-trash"></i>Delete</a>
             <a href="#" class="btn-sm btn-success pull-right">
               <i class="fa fa-edit"></i>Edit</a>

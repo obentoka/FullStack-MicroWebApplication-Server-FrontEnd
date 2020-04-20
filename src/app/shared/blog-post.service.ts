@@ -21,4 +21,8 @@ export class BlogPostService {
   postBlogPost(blogPost: BlogPost): Observable<BlogPost>{
     return this.http.post<BlogPost>(this.POST_BLOGPOST_URL, blogPost);
   }
+
+  // deleteBlogPost(id: string): Observable<>any>{
+  //   return this.http.delete()
+  // }
 }
