@@ -2,7 +2,7 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="col-md">
-      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && createBlogPost()" novalidate class="login-form">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && updateBlogPost()" novalidate class="login-form">
         <!-- Title -->
         <div class="form-group" style="margin-top:30px;">
           <label for="title">Title</label>
@@ -10,7 +10,7 @@
                  id="title"
                  class="form-control"
                  name="title"
-                 placeholder="What's the title of your post?"
+                 placeholder="{{model.title}}"
                  [(ngModel)]="model.title"
                  #title="ngModel"
                  [ngClass]="{ 'is-invalid': f.submitted && title.invalid }"
@@ -28,7 +28,7 @@
                  id="tag"
                  class="form-control"
                  name="tag"
-                 placeholder="#Tag"
+                 placeholder="{{model.tag}}"
                  [(ngModel)]="model.tag"
                  #tag="ngModel"
                  [ngClass]="{ 'is-invalid': f.submitted && tag.invalid }"
@@ -46,7 +46,7 @@
             id="post"
             class="form-control"
             name="post"
-            placeholder="Your post"
+            placeholder="{{model.body}}"
             rows="10"
             [(ngModel)]="model.body"
             #post="ngModel"
@@ -63,7 +63,7 @@
 
         <button type="submit"
                 class="btn btn-success pull-right">
-          <i class="fa fa-save"></i> Save Post
+          <i class="fa fa-save"></i> Update Post
         </button>
       </form>
     </div>

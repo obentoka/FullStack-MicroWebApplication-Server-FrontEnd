@@ -10,11 +10,11 @@
     <div class="col-md-4">
       <button type="buton"
               class="btn btn-warning pull-right"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> New Comment
+              style="margin-left:12px;"><i class="fa fa-comment"></i> New Comment
       </button>
       <button type="button" routerLink="/editor"
               class="btn btn-primary pull-right"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> New Blog Post
+              style="margin-left:12px;"><i class="fa fa-edit"></i> New Blog Post
       </button>
     </div>
   </div>
@@ -26,16 +26,19 @@
     </div>
 
     <!--  Blog content-->
-    <div class="col-6">
+    <div class="col-8">
       <div *ngFor="let blogPost of blogPosts" (click)="getAllCommentsBySelectedBlog(blogPost)"
            class="list-group-item list-group-item-action">
-        <div class="card" style="width: 100%;">
+        <div class="card" style="width: 100%;margin: 3px">
           <div class="card-body">
-            <h5 class="card-title">{{blogPost.title}}</h5>
+            <h5 class="card-title">{{blogPost.title}}
+              <br class="pull-right">by {{blogPost.username}}<a class="text-black-50"> {{blogPost.dateCreated}}</a><br>
+            </h5>
             <p class="card-text">{{blogPost.body}}</p>
-            <a href="#" class="btn-sm btn-danger pull-right">
+            <a href="#" class="btn-sm btn-danger pull-right"
+            (click)="deleteBlogPost(blogPost)">
               <i class="fa fa-trash"></i>Delete</a>
-            <a href="#" class="btn-sm btn-success pull-right">
+            <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
               <i class="fa fa-edit"></i>Edit</a>
           </div>
         </div>
@@ -44,9 +47,12 @@
 
 <!--    Comments-->
     <div class="col">
+      <div>
+        <h5 class="text-dark">Comments~</h5>
+      </div>
       <div *ngFor="let comment of comments"  class="list-group-item card" style="width: 100%;">
         <div class="card-body">
-          <h5 class="card-title">{{comment.user}}</h5>
+          <h5 class="card-title">@{{comment.username}}</h5>
           <p class="card-text">{{comment.text}}</p>
         </div>
       </div>

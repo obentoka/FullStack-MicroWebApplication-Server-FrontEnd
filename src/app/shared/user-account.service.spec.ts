@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ZcwAppService } from './zcw-app.service';
+import { UserAccountService } from './user-account.service';
 
-describe('ZcwAppService', () => {
-  let service: ZcwAppService;
+describe('UserAccountService', () => {
+  let service: UserAccountService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ZcwAppService);
+    service = TestBed.inject(UserAccountService);
   });
 
   it('should be created', () => {

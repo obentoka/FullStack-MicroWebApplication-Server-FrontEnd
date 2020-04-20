@@ -12,6 +12,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EditorComponent } from './editor/editor.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditorComponent } from './editor/editor.component';
     ViewComponent,
     LoginComponent,
     SignUpComponent,
-    EditorComponent
+    EditorComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

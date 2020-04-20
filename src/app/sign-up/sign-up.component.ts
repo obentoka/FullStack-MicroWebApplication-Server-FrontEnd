@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import {UserAccount} from "../view/model/user-account";
+import {formatDate} from "@angular/common";
+import {UserAccountService} from "../shared/user-account.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -7,32 +10,50 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  model:SignUp = {
+  model: UserAccount = {
+    userId: null,
+    dateCreated: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     username:'',
     password:'',
     email:''
   }
+  hasUsername: boolean = null;
+  hasEmail: boolean = null;
 
-  constructor(private http:HttpClient) { }
+  constructor(private userAccountService: UserAccountService) { }
 
   ngOnInit(): void {
   }
 
-  signUp(): void{
-    let url = "http://localhost:8080/zcw/user"
-    this.http.post(url, this.model).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        alert("An error has occurred while logging in")
-      }
-    )
+  signUp(): void {
+    this.getHasUsername();
+    this.getHasEmail();
+    if (!this.hasUsername && !this.hasEmail){
+      this.userAccountService.postUserAccount(this.model).subscribe(
+        res => {
+          this.model.userId = res.userId;
+          location.reload();
+        },
+        error => {
+          alert("An error has occurred while logging in")
+        }
+      )
+    }
   }
-}
 
-export interface SignUp {
-  username:string;
-  password:string;
-  email:string;
+  getHasUsername(): void {
+    this.userAccountService.getHasUsername(this.model.username).subscribe(
+      res => {
+        this.hasUsername = res.valueOf();
+      }
+    );
+  }
+
+  getHasEmail(): void {
+    this.userAccountService.getHasEmail(this.model.email).subscribe(
+      res => {
+        this.hasEmail = res.valueOf();
+      }
+    );
+  }
 }
