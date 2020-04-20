@@ -11,6 +11,7 @@ export class BlogPostService {
   private BASE_URL = "http://localhost:8080/zcwApp/blogPost";
   private ALL_BLOGPOSTS_URL = `${this.BASE_URL}/all`;
   private POST_BLOGPOST_URL = `${this.BASE_URL}/save`;
+  private DELETE_BLOGPOST_URL = `${this.BASE_URL}/delete/`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +23,7 @@ export class BlogPostService {
     return this.http.post<BlogPost>(this.POST_BLOGPOST_URL, blogPost);
   }
 
-  // deleteBlogPost(id: string): Observable<>any>{
-  //   return this.http.delete()
-  // }
+  deleteBlogPost(id: string): Observable<any>{
+    return this.http.delete(this.DELETE_BLOGPOST_URL + id);
+  }
 }

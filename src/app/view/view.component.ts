@@ -50,7 +50,15 @@ export class ViewComponent implements OnInit {
 
   public deleteBlogPost(blogPost: BlogPost) {
     if(confirm("Are you sure you want to delete this blog post?")){
-
+      this.blogPostService.deleteBlogPost(blogPost.blogId.toString()).subscribe(
+        res => {
+          let blogPostIndex = this.blogPosts.indexOf(blogPost);
+          this.blogPosts.splice(blogPostIndex, 1);
+        },
+        error => {
+          alert("Counldn't delete blog post")
+        }
+      );
     }
   }
 }
