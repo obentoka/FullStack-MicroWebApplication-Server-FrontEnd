@@ -19,7 +19,6 @@ export class EditorComponent implements OnInit {
     status: 'pending'
   }
 
-
   constructor(private blogPostService: BlogPostService) { }
 
   ngOnInit(): void {

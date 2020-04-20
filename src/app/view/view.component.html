@@ -38,7 +38,7 @@
             <a href="#" class="btn-sm btn-danger pull-right"
             (click)="deleteBlogPost(blogPost)">
               <i class="fa fa-trash"></i>Delete</a>
-            <a href="#" class="btn-sm btn-success pull-right">
+            <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
               <i class="fa fa-edit"></i>Edit</a>
           </div>
         </div>

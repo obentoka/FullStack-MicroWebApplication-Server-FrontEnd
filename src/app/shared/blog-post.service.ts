@@ -8,10 +8,13 @@ import {BlogComment} from "../view/model/blog-comment";
   providedIn: 'root'
 })
 export class BlogPostService {
+  private newUrl: string;
   private BASE_URL = "http://localhost:8080/zcwApp/blogPost";
   private ALL_BLOGPOSTS_URL = `${this.BASE_URL}/all`;
+  private GET_BLOGPOST_BYID_URL = `${this.BASE_URL}/`;
   private POST_BLOGPOST_URL = `${this.BASE_URL}/save`;
   private DELETE_BLOGPOST_URL = `${this.BASE_URL}/delete/`;
+  private UPDATE_BLOGPOST_BYID_URL = `${this.BASE_URL}/update/`;
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +28,14 @@ export class BlogPostService {
 
   deleteBlogPost(id: string): Observable<any>{
     return this.http.delete(this.DELETE_BLOGPOST_URL + id);
+  }
+
+  getBlogPostById(id: string): Observable<BlogPost> {
+    return this.http.get<BlogPost>(this.GET_BLOGPOST_BYID_URL + id);
+  }
+
+  updateBlogPost(id: string, blogPost: BlogPost): Observable<BlogPost>{
+    this.newUrl = this.UPDATE_BLOGPOST_BYID_URL + id;
+    return this.http.put<BlogPost>(this.newUrl, blogPost);
   }
 }
