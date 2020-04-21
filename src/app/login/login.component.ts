@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import {UserAccountService} from "../shared/user-account.service";
 
 @Component({
   selector: 'app-login',
@@ -11,16 +12,24 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   }
-  constructor(private http: HttpClient) { }
+  constructor(private userAccountService: UserAccountService) { }
 
   ngOnInit(): void {
   }
 
-  login(): void{
+  login(username: string, password: string): void{
+      this.userAccountService.getUserAccountLogin(username, password).subscribe(
+        res => {
+          localStorage.setItem("loggedIn", "true")
+          localStorage.setItem("currUsername", res.username)
+          localStorage.setItem("currId", res.userId.toString())
+          location.assign("http://localhost:4200/view")
+        }
+      )
   }
 }
 
 export interface Login {
-  username: string;
-  password: string;
+  username: string
+  password: string
 }

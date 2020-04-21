@@ -2,7 +2,7 @@
   <div class="row">
     <div class="offset-3"></div>
     <div class="col-md">
-      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login()" novalidate class="login-form">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && login(model.username, model.password)" novalidate class="login-form">
         <!-- User Name -->
         <div class="form-group" style="margin-top:30px;">
           <label for="username">Username</label>
