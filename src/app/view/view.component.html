@@ -8,10 +8,6 @@
              placeholder="Search blogs...">
     </div>
     <div class="col-md-4">
-      <button type="buton"
-              class="btn btn-warning pull-right"
-              style="margin-left:12px;"><i class="fa fa-comment"></i> New Comment
-      </button>
       <button type="button" routerLink="/editor"
               class="btn btn-primary pull-right"
               style="margin-left:12px;"><i class="fa fa-edit"></i> New Blog Post
@@ -46,6 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">@{{comment.username}}</h5>
           <p class="card-text">{{comment.text}}</p>
+          <a class="text-info pull-right">{{comment.likes}}</a>
         </div>
       </div>
     </div>

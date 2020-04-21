@@ -25,7 +25,7 @@
               <i class="fa fa-comment"></i></a>
           </div>
         </div>
-        <div [hidden]="!isComment">
+        <div [hidden]="!isComment" n>
           <input type="text" class="form-control" [(ngModel)]="commentText">
           <a class="btn-sm btn-success"
             (click)="createComment(commentText)">comment</a>
@@ -39,6 +39,9 @@
         <div class="card-body">
           <h5 class="card-title">@{{comment.username}}</h5>
           <p class="card-text">{{comment.text}}</p>
+          <a class="text-info pull-right">{{comment.likes}}</a>
+          <i class="fa fa-thumbs-up btn-sm btn-info pull-right"
+            (click)="increaseLike(comment)"></i>
         </div>
       </div>
     </div>

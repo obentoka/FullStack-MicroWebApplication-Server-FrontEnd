@@ -17,24 +17,26 @@ export class UpdateComponent implements OnInit {
     title: '',
     body: '',
     tag: '',
-    status: 'pending'
+    status: 'pending',
+    commentList: null,
+    userAccount: null
   }
-  private blogId: string;
+  private blogId: string
 
   constructor(private blogPostService: BlogPostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBlogId();
-    this.getBlogPost();
+    this.getBlogId()
+    this.getBlogPost()
   }
 
   getBlogPost(): void{
     this.blogPostService.getBlogPostByBlogId(this.blogId).subscribe(
       res => {
-        this.model = res;
+        this.model = res
       },
       error => {
-        alert("Failed to find blog post");
+        alert("Failed to find blog post")
       }
     );
   }
@@ -42,9 +44,9 @@ export class UpdateComponent implements OnInit {
   getBlogId(){
     this.activatedRoute.params.subscribe(
       res => {
-        this.blogId = res['id'];
+        this.blogId = res['id']
       }
-    );
+    )
   }
 
   updateBlogPost() {

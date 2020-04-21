@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ViewComponent} from "./view/view.component";
-import {FeedBackComponent} from "./feed-back/feed-back.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {LoginComponent} from "./login/login.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
@@ -32,7 +31,7 @@ const routes: Routes = [
     component: AllViewComponent
   },
   {
-    path: 'view/:id',
+    path: 'view',
     component: ViewComponent
   },
   {

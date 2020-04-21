@@ -13,41 +13,27 @@ import {UserAccount} from "./model/user-account";
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-  blogPosts: BlogPost[] = [];
-  selectedBlogPost: BlogPost;
-  comments: BlogComment[] = [];
-  userAccount: UserAccount;
+  blogPosts: BlogPost[] = []
+  selectedBlogPost: BlogPost
+  comments: BlogComment[] = []
+  isUserLoggedIn: boolean
 
   constructor(private blogPostService: BlogPostService,
-              private commentService: CommentService,
-              private userAccountService: UserAccountService,
-              private activatedRoute: ActivatedRoute) {
+              private commentService: CommentService) {
+    this.isUserLoggedIn = JSON.parse(localStorage.getItem("loggedIn"))
   }
 
-  ngOnInit(): void {
-    this.getUser()
-  }
-
-  public getUser(){
-    let userId = '';
-    this.activatedRoute.params.subscribe(
-      res => {
-        userId = res['id']
-      }
-    );
-    this.userAccountService.getUserAccount(userId).subscribe(
-      res => {
-        this.userAccount = res
-        console.log(res)
-        this.getAllBlogPostByUser()
-      }
-    );
+  ngOnInit(){
+    if(this.isUserLoggedIn == true)
+      this.getAllBlogPostByUser()
+    else
+      location.assign("http://localhost:4200/allview")
   }
 
   public getAllBlogPostByUser() {
-    this.blogPostService.getAllBlogPostsByUser(this.userAccount.username).subscribe(
+    this.blogPostService.getAllBlogPostsByUser(localStorage.getItem("currUsername")).subscribe(
       res => {
-        this.blogPosts = res;
+        this.blogPosts = res
       },
       error => {
         alert("An error has occurred while fetching all blog posts")
@@ -56,11 +42,11 @@ export class ViewComponent implements OnInit {
   }
 
   public getAllCommentsBySelectedBlog(blogPost: BlogPost) {
-    this.selectedBlogPost = blogPost;
+    this.selectedBlogPost = blogPost
     if (this.blogPosts.length != 0) {
       this.commentService.getAllCommentByBlogId(this.selectedBlogPost.blogId).subscribe(
         res => {
-          this.comments = res;
+          this.comments = res
         },
         error => {
           alert("An error occurred while fetching comments relating to blog id" + this.selectedBlogPost.blogId)
@@ -73,13 +59,14 @@ export class ViewComponent implements OnInit {
     if(confirm("Are you sure you want to delete this blog post?")){
       this.blogPostService.deleteBlogPost(blogPost.blogId.toString()).subscribe(
         res => {
-          let blogPostIndex = this.blogPosts.indexOf(blogPost);
-          this.blogPosts.splice(blogPostIndex, 1);
+          let blogPostIndex = this.blogPosts.indexOf(blogPost)
+          this.blogPosts.splice(blogPostIndex, 1)
+          location.assign("http://localhost:4200/view")
         },
         error => {
           alert("Couldn't delete blog post")
         }
-      );
+      )
     }
   }
 }
