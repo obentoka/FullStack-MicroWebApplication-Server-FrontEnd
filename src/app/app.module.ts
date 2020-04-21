@@ -13,6 +13,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EditorComponent } from './editor/editor.component';
 import { UpdateComponent } from './update/update.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UpdateComponent } from './update/update.component';
     LoginComponent,
     SignUpComponent,
     EditorComponent,
-    UpdateComponent
+    UpdateComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
