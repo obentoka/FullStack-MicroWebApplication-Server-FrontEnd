@@ -19,17 +19,17 @@ export class UpdateComponent implements OnInit {
     tag: '',
     status: 'pending'
   }
-  private id: string;
+  private blogId: string;
 
   constructor(private blogPostService: BlogPostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getId();
+    this.getBlogId();
     this.getBlogPost();
   }
 
   getBlogPost(): void{
-    this.blogPostService.getBlogPostById(this.id).subscribe(
+    this.blogPostService.getBlogPostByBlogId(this.blogId).subscribe(
       res => {
         this.model = res;
       },
@@ -39,10 +39,10 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  getId(){
+  getBlogId(){
     this.activatedRoute.params.subscribe(
       res => {
-        this.id = res['id'];
+        this.blogId = res['id'];
       }
     );
   }

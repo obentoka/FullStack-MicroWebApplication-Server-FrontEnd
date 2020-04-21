@@ -7,21 +7,11 @@
              style="width: 100%;"
              placeholder="Search blogs...">
     </div>
-    <div class="col-md-4">
-      <button type="buton"
-              class="btn btn-warning pull-right"
-              style="margin-left:12px;"><i class="fa fa-comment"></i> New Comment
-      </button>
-      <button type="button" routerLink="/editor"
-              class="btn btn-primary pull-right"
-              style="margin-left:12px;"><i class="fa fa-edit"></i> New Blog Post
-      </button>
-    </div>
   </div>
 
   <div class="row" style="margin-top: 28px;">
     <!--  Blog content-->
-    <div class="col-8">
+    <div class="col-xl-8">
       <div *ngFor="let blogPost of blogPosts" (click)="getAllCommentsBySelectedBlog(blogPost)"
            class="list-group-item list-group-item-action">
         <div class="card" style="width: 100%;margin: 3px">
@@ -30,19 +20,22 @@
               <br class="pull-right">by {{blogPost.username}}<a class="text-black-50"> {{blogPost.dateCreated}}</a><br>
             </h5>
             <p class="card-text">{{blogPost.body}}</p>
-            <a href="#" class="btn-sm btn-danger pull-right"
-            (click)="deleteBlogPost(blogPost)">
-              <i class="fa fa-trash"></i>Delete</a>
-            <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
-              <i class="fa fa-edit"></i>Edit</a>
+            <a href="#" class="btn-sm btn-warning pull-right"
+               (click)="toggleCommentBar()">
+              <i class="fa fa-comment"></i></a>
           </div>
+        </div>
+        <div [hidden]="!isComment">
+          <input type="text" class="form-control" [(ngModel)]="commentText">
+          <a class="btn-sm btn-success"
+            (click)="createComment(commentText)">comment</a>
         </div>
       </div>
     </div>
 
-<!--    Comments-->
+    <!--    Comments-->
     <div class="col">
-      <div *ngFor="let comment of comments"  class="list-group-item card" style="width: 100%;">
+      <div *ngFor="let comment of comments" class="list-group-item card" style="width: 100%;">
         <div class="card-body">
           <h5 class="card-title">@{{comment.username}}</h5>
           <p class="card-text">{{comment.text}}</p>

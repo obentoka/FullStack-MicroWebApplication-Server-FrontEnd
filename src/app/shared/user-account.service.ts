@@ -9,20 +9,14 @@ import {Observable} from "rxjs";
 export class UserAccountService {
   private newUrl: string;
   private BASE_URL = "http://localhost:8080/zcwApp/userAccount";
-  private POST_USER_ACCOUNT_URL = `${this.BASE_URL}/save`
-  private POST_HAS_USERNAME_URL = `${this.BASE_URL}/hasUsername/`
-  private POST_HAS_EMAIL_URL = `${this.BASE_URL}/hasEmail/`
+  private GET_USER_ACCOUNT_BYID_URL = `${this.BASE_URL}/`;
+  private POST_USER_ACCOUNT_URL = `${this.BASE_URL}/save`;
 
   constructor(private http: HttpClient) { }
 
-  getHasUsername(username: String): Observable<Boolean>{
-    this.newUrl = `${this.POST_HAS_USERNAME_URL}?username=${username}`;
-    return this.http.get<Boolean>(this.newUrl);
-  }
-
-  getHasEmail(email: String): Observable<Boolean>{
-    this.newUrl = `${this.POST_HAS_EMAIL_URL}?email=${email}`;
-    return this.http.get<Boolean>(this.newUrl);
+  getUserAccount(id: string): Observable<UserAccount>{
+    this.newUrl = this.GET_USER_ACCOUNT_BYID_URL + id;
+    return this.http.get<UserAccount>(this.newUrl);
   }
 
   postUserAccount(userAccount: UserAccount): Observable<UserAccount>{

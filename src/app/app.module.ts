@@ -13,18 +13,19 @@ import { HttpClientModule } from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EditorComponent } from './editor/editor.component';
 import { UpdateComponent } from './update/update.component';
+import { AllViewComponent } from './all-view/all-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    FeedBackComponent,
     NotFoundComponent,
     ViewComponent,
     LoginComponent,
     SignUpComponent,
     EditorComponent,
-    UpdateComponent
+    UpdateComponent,
+    AllViewComponent
   ],
   imports: [
     BrowserModule,
