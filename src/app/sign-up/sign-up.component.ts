@@ -12,7 +12,15 @@ import {BlogComment} from "../view/model/blog-comment";
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  model: UserAccount
+  model: UserAccount = {
+    userId: null,
+    dateCreated: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    username: '',
+    password: '',
+    email: '',
+    blogPostList: null,
+    commentList: null
+  }
 
   constructor(private userAccountService: UserAccountService) {
   }
