@@ -63,11 +63,13 @@ export class AllViewComponent implements OnInit {
     }
   }
 
-  public toggleCommentBar() {
+  public toggleCommentBar(event: any) {
+    event.preventDefault()
     this.isComment = !this.isComment
   }
 
-  public createComment(comment: string) {
+  public createComment(comment: string, event: any) {
+    event.preventDefault()
     this.blogComment.text = comment
     this.blogComment.blogId = this.selectedBlogPost.blogId
     if(JSON.parse(localStorage.getItem("loggedIn"))){
