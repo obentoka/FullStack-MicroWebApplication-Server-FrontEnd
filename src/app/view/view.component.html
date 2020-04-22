@@ -1,23 +1,7 @@
-<div class="container">
-  <!-- Blog menu -->
-  <div class="row" style="margin-top:12px;">
-    <div class="col-md-8">
-      <input type="text"
-             class="form-control"
-             style="width: 100%;"
-             placeholder="Search blogs...">
-    </div>
-    <div class="col-md-4">
-      <button type="button" routerLink="/editor"
-              class="btn btn-primary pull-right"
-              style="margin-left:12px;"><i class="fa fa-edit"></i> New Blog Post
-      </button>
-    </div>
-  </div>
-
+<div class="container" style="padding: 0!important;">
   <div class="row" style="margin-top: 28px;">
     <!--  Blog content-->
-    <div class="col-8">
+    <div class="col-xl-9">
       <div *ngFor="let blogPost of blogPosts" (click)="getAllCommentsBySelectedBlog(blogPost)"
            class="list-group-item list-group-item-action">
         <div class="card" style="width: 100%;margin: 3px">
@@ -27,7 +11,7 @@
             </h5>
             <p class="card-text">{{blogPost.body}}</p>
             <a href="#" class="btn-sm btn-danger pull-right"
-            (click)="deleteBlogPost(blogPost)">
+               (click)="deleteBlogPost(blogPost)">
               <i class="fa fa-trash"></i>Delete</a>
             <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
               <i class="fa fa-edit"></i>Edit</a>
@@ -36,13 +20,15 @@
       </div>
     </div>
 
-<!--    Comments-->
+    <!--    Comments-->
     <div class="col">
-      <div *ngFor="let comment of comments"  class="list-group-item card" style="width: 100%;">
-        <div class="card-body">
-          <h5 class="card-title">@{{comment.username}}</h5>
-          <p class="card-text">{{comment.text}}</p>
-          <a class="text-info pull-right">{{comment.likes}}</a>
+      <div class="makescroll">
+        <div *ngFor="let comment of comments" class="list-group-item card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">@{{comment.username}}</h5>
+            <p class="card-text">{{comment.text}}</p>
+            <a class="text-info pull-right">{{comment.likes}}</a>
+          </div>
         </div>
       </div>
     </div>
