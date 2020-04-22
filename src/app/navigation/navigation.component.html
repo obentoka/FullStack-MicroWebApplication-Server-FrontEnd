@@ -14,8 +14,21 @@
       </li>
     </ul>
   </div>
+  <span class="col-md-6">
+      <input type="text"
+             class="form-control"
+             style="width: 100%;"
+             placeholder="Search blogs...">
+  </span>
+  <div class="col">
+    <button *ngIf="isUserLoggedIn"
+            type="button" routerLink="/editor"
+            class="btn btn-primary pull-right"
+            style="margin-left:12px;"><i class="fa fa-edit"></i> New
+    </button>
+  </div>
   <a class="nav-link" routerLink="/signup" *ngIf="!isUserLoggedIn">Sign Up</a>
   <a class="nav-link" routerLink="/login" *ngIf="!isUserLoggedIn">Login</a>
   <a class="text-warning" style="margin-right: 5px;" *ngIf="isUserLoggedIn">Welcome {{username}}!</a>
-  <button type="button" class="btn-warning" (click)="loggOut()" *ngIf="isUserLoggedIn">Loggout</button>
+  <button type="button" class="btn-warning" (click)="loggOut()" *ngIf="isUserLoggedIn">Logout</button>
 </nav>

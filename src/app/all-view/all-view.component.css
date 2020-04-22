@@ -1,1 +1,9 @@
-
+.makescroll {
+  position: fixed;
+  height: 80%;
+  overflow: scroll;
+  text-align: left;
+  border-radius: 5px;
+  border-top: solid #929292 1px;
+  border-bottom: solid #929292 1px;
+}
