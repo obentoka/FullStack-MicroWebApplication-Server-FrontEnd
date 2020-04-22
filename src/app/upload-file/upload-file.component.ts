@@ -15,6 +15,7 @@ export class UploadFileComponent {
   changeImage = false;
   file:string;
   constructor(private uploadService: UploadFileService, private https:HttpClient){}
+
   viewFile(){
     window.open('https://bucketName.s3.cloudLocation.amazonaws.com/'+this.file);
   }

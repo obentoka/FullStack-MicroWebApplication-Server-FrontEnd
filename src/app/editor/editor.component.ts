@@ -4,6 +4,8 @@ import {formatDate} from "@angular/common";
 import {BlogPostService} from "../shared/blog-post.service";
 import {UserAccount} from "../view/model/user-account";
 import {UserAccountService} from "../shared/user-account.service";
+import {UploadFileComponent} from "../upload-file/upload-file.component";
+import {UploadFileService} from "../shared/upload-file.service";
 
 @Component({
   selector: 'app-editor',
@@ -24,7 +26,9 @@ export class EditorComponent implements OnInit {
   }
 
   constructor(private blogPostService: BlogPostService,
-              private userAccountService: UserAccountService) { }
+              private userAccountService: UserAccountService,
+              private uploadFileService: UploadFileService,
+              private uploadFileComponent: UploadFileComponent) { }
 
   ngOnInit(): void {
   }
@@ -46,5 +50,15 @@ export class EditorComponent implements OnInit {
       }
     )
   }
+
+  public uploadFile(): void{
+    this.uploadFileComponent.upload();
+  }
+
+  public selectFile(event): void{
+    this.uploadFileComponent.selectedFile();
+  }
+
+
 
 }
