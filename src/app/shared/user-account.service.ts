@@ -30,7 +30,7 @@ export class UserAccountService {
         params: {
           username: username,
           password: password
-        },
+        }
       }
     )
   }
