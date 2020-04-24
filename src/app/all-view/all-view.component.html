@@ -17,9 +17,8 @@
         </div>
         <div *ngIf="isComment && (selectedBlogPost.blogId === blogPost.blogId)">
           <input type="text" class="form-control" [(ngModel)]="commentText"
-                 style="margin-bottom: 5px;margin-top: 5px;">
-          <a href="#" class="btn-sm btn-success"
-             (click)="createComment(commentText, $event)">comment</a>
+                 style="margin-bottom: 5px;margin-top: 5px; margin-left: 3px"
+                 (keyup.enter)="createComment(commentText, $event)">
         </div>
       </div>
     </div>
