@@ -13,7 +13,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { EditorComponent } from './editor/editor.component';
 import { UpdateComponent } from './update/update.component';
 import { AllViewComponent } from './all-view/all-view.component';
-import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     EditorComponent,
     UpdateComponent,
     AllViewComponent,
-    UploadFileComponent
   ],
   imports: [
     BrowserModule,

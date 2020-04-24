@@ -5,6 +5,7 @@ import {BlogPostService} from "../shared/blog-post.service";
 import {CommentService} from "../shared/comment.service";
 import {formatDate} from "@angular/common";
 import {UserAccountService} from "../shared/user-account.service";
+import {UploadFileService} from "../shared/upload-file.service";
 
 @Component({
   selector: 'app-all-view',
