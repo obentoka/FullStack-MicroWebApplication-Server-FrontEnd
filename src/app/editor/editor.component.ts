@@ -4,7 +4,6 @@ import {formatDate} from "@angular/common";
 import {BlogPostService} from "../shared/blog-post.service";
 import {UserAccount} from "../view/model/user-account";
 import {UserAccountService} from "../shared/user-account.service";
-import {UploadFileComponent} from "../upload-file/upload-file.component";
 import {UploadFileService} from "../shared/upload-file.service";
 import {HttpClient} from "@angular/common/http";
 
