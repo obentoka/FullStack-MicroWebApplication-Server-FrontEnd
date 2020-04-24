@@ -6,6 +6,7 @@ import {UserAccount} from "../view/model/user-account";
 import {UserAccountService} from "../shared/user-account.service";
 import {UploadFileComponent} from "../upload-file/upload-file.component";
 import {UploadFileService} from "../shared/upload-file.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-editor',
@@ -24,11 +25,18 @@ export class EditorComponent implements OnInit {
     commentList: null,
     userAccount: null
   }
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
+  selectedFile = null;
+  changeImage = false;
+  file:string;
+
 
   constructor(private blogPostService: BlogPostService,
               private userAccountService: UserAccountService,
               private uploadFileService: UploadFileService,
-              private uploadFileComponent: UploadFileComponent) { }
+              private https:HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -51,12 +59,16 @@ export class EditorComponent implements OnInit {
     )
   }
 
-  public uploadFile(): void{
-    this.uploadFileComponent.upload();
+  upload() {
+    this.progress.percentage = 0;
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.uploadFileService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+      this.selectedFiles = undefined;
+    });
   }
 
-  public selectFile(event): void{
-    this.uploadFileComponent.selectedFile();
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
 

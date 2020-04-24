@@ -33,6 +33,7 @@ export class UploadFileComponent {
   changedImage(event) {
     this.selectedFile = event.target.files[0];
   }
+
   upload() {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
