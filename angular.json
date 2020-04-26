@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FullStack-MicroWebApplication-Server-FrontEnd"
+    }
+  },
+  "defaultProject": "FullStack-MicroWebApplication-Server-FrontEnd",
+  "cli": {
+    "analytics": false
+  }
 }

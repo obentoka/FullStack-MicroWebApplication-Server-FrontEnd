@@ -1,4 +1,4 @@
-<div class="container" style="padding: 0!important;">
+<div class="container-fluid" style="padding: 0!important;">
   <div class="row" style="margin-top: 28px;">
     <!--  Blog content-->
     <div class="col-xl-9">
@@ -10,24 +10,32 @@
               <br class="pull-right">by {{blogPost.username}}<a class="text-black-50"> {{blogPost.dateCreated}}</a><br>
             </h5>
             <p class="card-text">{{blogPost.body}}</p>
-            <a href="#" class="btn-sm btn-danger pull-right"
-               (click)="deleteBlogPost(blogPost)">
-              <i class="fa fa-trash"></i>Delete</a>
-            <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
-              <i class="fa fa-edit"></i>Edit</a>
+            <a href="#" class="btn-sm btn-warning pull-right"
+               (click)="toggleCommentBar($event)">
+              <i class="fa fa-comment"></i></a>
           </div>
+        </div>
+        <div *ngIf="isComment && (selectedBlogPost.blogId === blogPost.blogId)">
+          <input type="text" class="form-control" [(ngModel)]="commentText"
+                 style="margin-bottom: 5px;margin-top: 5px;">
+          <a href="#" class="btn-sm btn-success"
+             (click)="createComment(commentText, $event)">comment</a>
         </div>
       </div>
     </div>
 
     <!--    Comments-->
-    <div class="col">
+    <div class="col" >
       <div class="makescroll">
-        <div *ngFor="let comment of comments" class="list-group-item card" style="width: 100%;">
+        <div *ngFor="let comment of comments" class="list-group-item card"
+             style="width: 100%;">
           <div class="card-body">
             <h5 class="card-title">@{{comment.username}}</h5>
             <p class="card-text">{{comment.text}}</p>
             <a class="text-info pull-right">{{comment.likes}}</a>
+            <i class="fa fa-thumbs-up btn-sm btn-info pull-right"
+               style="margin-right: 5px;"
+               (click)="increaseLike(comment)"></i>
           </div>
         </div>
       </div>
