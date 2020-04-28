@@ -10,7 +10,7 @@
               <br class="pull-right">by {{blogPost.username}}<a class="text-black-50"> {{blogPost.dateCreated}}</a><br>
             </h5>
             <p class="card-text">{{blogPost.body}}</p>
-            <a href="#" class="btn-sm btn-danger pull-right"
+            <a href="#" class="btn-sm btn-danger pull-right" routerLink="/view"
                (click)="deleteBlogPost(blogPost)">
               <i class="fa fa-trash"></i>Delete</a>
             <a href="#" routerLink="/update/{{blogPost.blogId}}" class="btn-sm btn-success pull-right">
