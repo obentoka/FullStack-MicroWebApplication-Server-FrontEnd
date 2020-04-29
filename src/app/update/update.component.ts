@@ -53,7 +53,7 @@ export class UpdateComponent implements OnInit {
     this.blogPostService.updateBlogPost(this.model.blogId.toString(), this.model)
       .subscribe(
         res => {
-          location.assign("http://localhost:4200/view")
+          location.assign("https://zcwapp.herokuapp.com/view")
         },
         error => {
           alert("An error occurred while updating blog post")
