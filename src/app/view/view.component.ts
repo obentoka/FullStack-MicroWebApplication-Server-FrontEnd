@@ -27,7 +27,7 @@ export class ViewComponent implements OnInit {
     if(this.isUserLoggedIn == true)
       this.getAllBlogPostByUser()
     else
-      location.assign("http://localhost:4200/allview")
+      location.assign("https://zcwapp.herokuapp.com/allview")
   }
 
   public getAllBlogPostByUser() {
@@ -61,7 +61,7 @@ export class ViewComponent implements OnInit {
         res => {
           let blogPostIndex = this.blogPosts.indexOf(blogPost)
           this.blogPosts.splice(blogPostIndex, 1)
-          location.assign("http://localhost:4200/view")
+          location.assign("https://zcwapp.herokuapp.com/view")
         },
         error => {
           alert("Couldn't delete blog post")

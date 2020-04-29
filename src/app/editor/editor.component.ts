@@ -48,7 +48,7 @@ export class EditorComponent implements OnInit {
         this.blogPostService.postBlogPost(this.model).subscribe(
           blogPost => {
             this.model.blogId = blogPost.blogId;
-            location.assign("http://localhost:4200/view")
+            location.assign("https://zcwapp.herokuapp.com/view")
           },
           error => {
             alert("An error occurred while saving blog post")

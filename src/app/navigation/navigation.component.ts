@@ -24,6 +24,6 @@ export class NavigationComponent implements OnInit {
   loggOut(): void{
     localStorage.setItem("loggedIn", "false")
     this.isUserLoggedIn = JSON.parse(localStorage.getItem("loggedIn"))
-    location.assign("http://localhost:4200/allview")
+    location.assign("https://zcwapp.herokuapp.com/allview")
   }
 }

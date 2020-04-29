@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("loggedIn", "true")
           localStorage.setItem("currUsername", res.username)
           localStorage.setItem("currId", res.userId.toString())
-          location.assign("http://localhost:4200/view")
+          location.assign("https://zcwapp.herokuapp.com/view")
         }
       )
   }
