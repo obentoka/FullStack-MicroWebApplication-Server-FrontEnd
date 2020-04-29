@@ -66,10 +66,13 @@ export class EditorComponent implements OnInit {
     });
   }
 
+  validateSize() {
+    if (this.selectedFiles.item(0).size / 1024 / 1024 > 1) {
+      alert("File must be smaller than 1MB");
+      this.selectedFiles = undefined;
+    }
+  }
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-
-
-
 }
