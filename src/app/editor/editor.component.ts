@@ -48,12 +48,16 @@ export class EditorComponent implements OnInit {
         this.blogPostService.postBlogPost(this.model).subscribe(
           blogPost => {
             this.model.blogId = blogPost.blogId;
+            // this.upload()
             location.assign("http://localhost:4200/view")
           },
           error => {
             alert("An error occurred while saving blog post")
           }
         )
+      },
+      error => {
+        alert("An error occurred while retrieving user")
       }
     )
   }
