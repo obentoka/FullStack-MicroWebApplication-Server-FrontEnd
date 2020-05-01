@@ -14,7 +14,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class EditorComponent implements OnInit {
   model: BlogPost = {
-    blogId: null,
+    blogId: 0,
     dateCreated: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     username: '',
     title: '',

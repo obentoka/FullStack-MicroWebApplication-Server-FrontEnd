@@ -19,7 +19,7 @@ export class AllViewComponent implements OnInit {
   isComment: boolean = false
   commentText: string = ''
   blogComment: BlogComment = {
-    commentId: null,
+    commentId: 0,
     dateCreated: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
     username: '',
     text: '',
