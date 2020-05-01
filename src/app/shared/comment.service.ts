@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CommentService {
   private newUrl: string;
-  private BASE_URL = "http://localhost:8080/zcwApp/comment";
+  private BASE_URL = "https://zcwappbackend.herokuapp.com/zcwApp/comment";
   private GET_COMMENT_INCREMENT_LIKES_URL = `${this.BASE_URL}/+likes/`;
   private ALL_COMMENTS_BY_POST_URL = `${this.BASE_URL}/allByBlogId/`;
   private POST_COMMENT_URL = `${this.BASE_URL}/save`;

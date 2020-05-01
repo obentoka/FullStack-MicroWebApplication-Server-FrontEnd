@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class UserAccountService {
   private newUrl: string
-  private BASE_URL = "http://localhost:8080/zcwApp/userAccount"
+  private BASE_URL = "https://zcwappbackend.herokuapp.com/zcwApp/userAccount"
   private GET_USER_ACCOUNT_BYID_URL = `${this.BASE_URL}/`
   private GET_USER_ACCOUNT_LOGIN_URL = `${this.BASE_URL}/login`
   private POST_USER_ACCOUNT_URL = `${this.BASE_URL}/save`

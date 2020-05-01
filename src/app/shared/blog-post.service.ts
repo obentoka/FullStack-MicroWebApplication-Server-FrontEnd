@@ -8,7 +8,7 @@ import { BlogPost } from "../view/model/blog-post";
 })
 export class BlogPostService {
   private newUrl: string;
-  private BASE_URL = "http://localhost:8080/zcwApp/blogPost";
+  private BASE_URL = "https://zcwappbackend.herokuapp.com/zcwApp/blogPost";
   private ALL_BLOGPOSTS_URL = `${this.BASE_URL}/all`;
   private GET_BLOGPOST_BYBLOGID_URL = `${this.BASE_URL}/`;
   private GET_BLOGPOST_BYUSERID_URL = `${this.BASE_URL}/allByUser/`;
